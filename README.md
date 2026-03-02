@@ -36,3 +36,7 @@ SELECT category, SUM(gross_amount) AS revenue
 FROM fact_sales
 GROUP BY category;
 ###Top Selling Products
+SELECT product_name, SUM(qty) AS total_qty
+FROM fact_sales
+GROUP BY product_name
+ORDER BY total_qty DESC;
