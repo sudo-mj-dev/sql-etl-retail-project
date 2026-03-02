@@ -8,13 +8,16 @@ It demonstrates how raw CSV data can be:
 This project helps build foundational ETL and SQL skills required for Data Engineering roles.
 ---
 ## 2. Folder Structure
-sql-etl-retail-project/ │ ├── raw_data/ │ ├── orders.csv │ ├── order_items.csv │ └── products.csv │ ├── sql/ │ ├── create_tables.sql │ ├── staging.sql │ ├── dim_product.sql │ └── fact_sales.sql │ └── README.md
+sql-etl-retail-project/ │ 
+├── raw_data/ │ ├── orders.csv │ ├── order_items.csv │ └── products.csv │ 
+├── sql/ │ ├── create_tables.sql │ ├── staging.sql │ ├── dim_product.sql │ └── fact_sales.sql │ 
+└── README.md
 ---
 ## 3. Raw Data Description 
 ### 3.1 orders.csv 
 Contains order header information such as order date, customer ID, store ID, and status.
-### 3.2 order_items.csv 
-Contains line-level item data such as product ID, quantity, and unit price. 
+### 3.2 order_items.csv
+Contains line-level item data such as product ID, quantity, and unit price.
 ### 3.3 products.csv 
 Contains product master data including product name, category, and price. These three datasets represent a simplified retail order system. 
 --- 
@@ -28,14 +31,14 @@ Contains product-related descriptive attributes.
 A fact table created by joining staging tables. Contains: - Order information - Product details - Quantities and prices - A derived metric: `gross_amount = qty * unit_price` 
 --- 
 ## 5. Example Analysis Queries 
-### Total Revenue 
+#### Total Revenue 
 SELECT SUM(gross_amount) AS total_revenue 
 FROM fact_sales;
-### Revenue by Product Category
+#### Revenue by Product Category
 SELECT category, SUM(gross_amount) AS revenue
 FROM fact_sales
 GROUP BY category;
-### Top Selling Products
+#### Top Selling Products
 SELECT product_name, SUM(qty) AS total_qty
 FROM fact_sales
 GROUP BY product_name
